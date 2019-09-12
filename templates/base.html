@@ -1,0 +1,24 @@
+<!doctype html>
+
+<head>
+  <style>
+    textarea {
+      font-size: 18px;
+    }
+  </style>
+</head>
+<title>GovNews Tagging Demo</title>
+<h1>GovNews Tagging Demo</h1>
+<div>
+  <form action="/ask" method="post">
+    <fieldset>
+      <legend>Query</legend>
+      Text:<br>
+      <textarea id="passage" name="passage" rows="15" cols="80">{{ passage }}</textarea><br>
+      <input type="submit" value="Submit">
+      <br>
+    </fieldset>
+    {% block answer %}{% endblock %}
+
+  </form>
+</div>
