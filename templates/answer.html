@@ -1,23 +1,9 @@
 {% extends "base.html" %}
 {% block answer %}
-<fieldset>
-    Tags sorted by likelihood:
-    <br>
-    <ul>
-        <table>
-            {% for (k, v) in response_hi %}
-            <TR>
-               <TD><strong>{{k}}</strong></TD>
-               <TD align="right"><strong>{{v}}</strong></TD>
-            </TR>
-            {% endfor %}
-            {% for (k, v) in response_lo %}
-            <TR>
-               <TD>{{k}}</TD>
-               <TD align="right">{{v}}</TD>
-            </TR>
-            {% endfor %}
-        </table>
-    </ul>
-</fieldset>
+    {% for (k, v) in response_hi %}
+    <div class="tag col-6 col-md-4 py-1"><strong>{{k}} ({{v}})</strong></div>
+    {% endfor %}
+    {% for (k, v) in response_lo %}
+    <div class="tag col-6 col-md-4 py-1">{{k}} ({{v}})</div>
+    {% endfor %}
 {% endblock %}

@@ -1,0 +1,187 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  min-width: 340px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+#row-header {
+  height: 4em;
+}
+
+#row-query {
+  background-color: #164450;
+  height: 14em;
+}
+
+#row-query, #row-tag {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#row-tag {
+  height: 5em;
+  margin-top: 2.5em;
+}
+
+#row-query label {
+  color: white;
+  font-weight: bold;
+}
+
+#row-query .panel {
+  width: 100%;
+}
+
+#passage {
+  height: 4em;
+}
+
+#btn-query {
+  background: url('../img/button.png') no-repeat;
+  background-size: 100%;
+  height: 6.2em;
+  width: 6.2em;
+  transition: background-image .5s, opacity 2s;
+  margin-top: 2em;
+}
+
+#btn-query:hover {
+  background-image: url('../img/button-hover.png');
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1); 
+}
+
+/* Extra small devices (less than 568px) */
+/* No media query for `xs` since this is the default in Bootstrap */
+
+/* Small devices (568px and up) */
+@media (min-height: 568px) {
+  #row-query {
+    height: 18em;
+  }
+
+  #passage {
+    height: 8em;
+  }
+}
+
+/* Medium devices (667px and up) */
+@media (min-height: 667px) {
+  #row-query {
+    height: 25em;
+  }
+
+  #passage {
+    height: 14em;
+  }
+}
+
+/* Settings for min-height */
+
+/* Large devices (812px and up) */
+@media (min-height: 812px) {
+  #row-query {
+    height: 28em;
+  }
+
+  #passage {
+    height: 17em;
+  }
+}
+
+/* Extra large devices (1024px) */
+@media (min-height: 1024px) {
+  #row-query {
+    height: 33em;
+  }
+
+  #passage {
+    height: 22em;
+  }
+}
+
+/* Extra large devices (1366px and up) */
+@media (min-height: 1366px) {
+  #row-query {
+    height: 41em;
+  }
+
+  #passage {
+    height: 30em;
+  }
+}
+
+/* Settings for min-width */
+
+/* Small devices (568px and up) */
+@media (min-width: 568px) {
+  #container-main {
+    padding-left: 5em;
+    padding-right: 5em;
+  }
+
+  #row-header .title {
+    font-size: 1.1em;
+  }
+
+  #row-query, #row-tag {
+    padding: 2em;
+  }
+
+  #btn-query {
+    width: 6.4em;
+    height: 6.4em;
+    margin-top: 1.5em;
+  }
+}
+
+/* Medium devices (667px and up) */
+@media (min-width: 667px) {
+  #row-header {
+    height: 4em;
+  }
+
+  #btn-query {
+    width: 6.6em;
+    height: 6.6em;
+  }
+
+/* Large devices (812px and up) */
+@media (min-width: 812px) {
+}
+
+/* Extra large devices (1024px and up) */
+@media (min-width: 1024px) {
+  body, textarea {
+    font-size: 1.1em !important;
+  }
+
+  #row-header {
+    height: 8em;
+    padding: 2em;
+  }
+
+  #row-header .title {
+    font-size: 1.5em;
+  }
+
+  #container-main {
+    padding-left: 10em;
+    padding-right: 10em;
+  }
+
+  #btn-query {
+    height: 7em;
+    width: 7em;
+    margin-top: .7em;
+  }
+}
+
+/* Extra large devices (1366px and up) */
+@media (min-width: 1366px) {
+}
