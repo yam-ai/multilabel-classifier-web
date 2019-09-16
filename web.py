@@ -1,7 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, \
+    send_from_directory
 import requests as http_client
+from http import HTTPStatus
 
 THRESHOLD = 0.5
+ENDPOINT = 'http://0.0.0.0:8000/classifier'
 
 
 def sort_dict(dct):
@@ -33,10 +36,7 @@ def create_app(ENDPOINT):
 
     @app.route('/ask', methods=['GET', 'POST'])
     def ask():
-        print('enter ask')
-        print('form = {}'.format(request.form.to_dict()))
         passage = request.form['passage']
-        print('passage = {}'.format(passage))
         query = {
             "texts": [
                 {
@@ -45,27 +45,25 @@ def create_app(ENDPOINT):
                 }
             ]
         }
-        print('query = {}'.format(query))
-        response = http_client.post(url=ENDPOINT, json=query)
-        print('status code = {}'.format(response.status_code))
-        print('json = {}'.format(response.json()))
-        scores = response.json()[0].get("scores")
-        lo, hi = sort_dict(scores)
+        err, lo, hi = None, None, None
+        try:
+            response = http_client.post(url=ENDPOINT, json=query)
+            if response.status_code == HTTPStatus.BAD_REQUEST:
+                err = 'Invalid text data'
+            if response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:
+                err = 'Internal server error'
+            scores = response.json()[0].get("scores")
+            lo, hi = sort_dict(scores)
+        except Exception as e:
+            err = 'Prediction service unavailable'
 
-        return render_template('answer.html', passage=passage, response_hi=hi, response_lo=lo)
+        return render_template(
+            'answer.html', passage=passage,
+            response_hi=hi, response_lo=lo, err=err)
 
     return app
 
-    # @app.route('/css/<path:path>')
-    # def send_css(path):
-    #     return send_from_directory('css', path)
-
-    # @app.route('/img/<path:path>')
-    # def send_img(path):
-    #     return send_from_directory('img', path)
-
 
 if __name__ == "__main__":
-    ENDPOINT = 'http://0.0.0.0:8000/classifier'
     app = create_app(ENDPOINT)
     app.run(host='0.0.0.0')

@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 {% block answer %}
-    {% for (k, v) in response_hi %}
-    <div class="tag col-6 col-md-4 py-1"><strong>{{k}} ({{v}})</strong></div>
-    {% endfor %}
-    {% for (k, v) in response_lo %}
-    <div class="tag col-6 col-md-4 py-1">{{k}} ({{v}})</div>
-    {% endfor %}
+{% if err %}
+<div class="col-12 text-center"><em>{{err}}</em></div>
+{% else %}
+{% for (k, v) in response_hi %}
+<div class="tag col-6 col-md-4 py-1"><i class="fa fa-tag pr-1"></i><strong>{{k}} ({{v}})</strong></div>
+{% endfor %}
+{% for (k, v) in response_lo %}
+<div class="tag col-6 col-md-4 py-1"><i class="fa fa-tag pr-1"></i>{{k}} ({{v}})</div>
+{% endfor %}
+{% endif %}
 {% endblock %}
