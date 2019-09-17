@@ -23,7 +23,7 @@ docker run -v $MODEL_DIR:/model -p 8000:8000 --name backend --network mlc-net ya
 Run the multilabel text classifier frontend:
 
 ```sh
-docker run -e "MLC_ENDPOINT=http://back:8000/classifier" -e "MLC_HOST_PORT=0.0.0.0:5000" -p 5000:5000 --name front --network mlc-net -it yamai/multilabel-classifier-web
+docker run -e "MLC_ENDPOINT=http://backend:8000/classifier" -e "MLC_HOST_PORT=0.0.0.0:5000" -p 5000:5000 --name front --network mlc-net -it yamai/multilabel-classifier-web
 ```
 
 ## Access the web frontend
