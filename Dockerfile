@@ -6,10 +6,10 @@ COPY . /web/
 RUN pip install -U pip setuptools \
     && pip install -r requirements.txt
 
-ENV PORT=5000
-ENV MULTILABEL_CLASSIFIER_ENDPOINT="http://multilabel-classifier/classifier"
+ENV MLC_HOST_PORT="0.0.0.0:5000"
+ENV MLC_ENDPOINT="http://0.0.0.0:8000/classifier"
 RUN echo '#!/usr/bin/env sh' > /serve.sh \
-    && echo 'gunicorn -b 0.0.0.0:${PORT} "web:create_app(\"${MULTILABEL_CLASSIFIER_ENDPOINT}\")"' >> /serve.sh \
+    && echo 'gunicorn -b ${MLC_HOST_PORT} "web:create_app(\"${MLC_ENDPOINT}\")"' >> /serve.sh \
     && chmod +x /serve.sh
 
 CMD ["/serve.sh"]
