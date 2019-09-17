@@ -1,4 +1,4 @@
-# Multilabel Classifier Web Frontend
+# Multilabel Text Classifier Web Frontend
 
 ## Usage
 
@@ -36,7 +36,7 @@ docker run -e "MLC_ENDPOINT=http://backend:8000/classifier" -e "MLC_HOST_PORT=0.
 
 ### Access the web frontend
 
-Based on the above configuration, open the URL https://localhost:5000 on a browser.
+With the above configuration, you may open the URL https://localhost:5000 on a browser to access the Multilabel Text Classifier Web Frontend.
 
 ## Professional services
 
