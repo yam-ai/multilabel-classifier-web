@@ -17,7 +17,7 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="static/css/custom.css">
 
-  <title>GovNews Tagging</title>
+  <title>{{title}}</title>
 </head>
 
 <body>
@@ -29,7 +29,8 @@
             <!-- HTML5 Header -->
             <header class="flex-fill d-flex align-items-center">
               <!-- Header Title -->
-              <div class="title w-100">GovNews Tagging<br /><small><strong>YAM AI Machinery</strong></small>
+              <div class="title w-100">{{title}}<br />
+              <small>Powered by <strong><a href="https://www.yam.ai">YAM</a></strong></small>
               </div>
             </header>
           </div>
@@ -39,8 +40,8 @@
             <!-- Query Panel -->
             <div class="panel">
               <!-- Query Form -->
-              <form name="queryForm" class="w-100" action="/ask" method="post"
-                onSubmit="if(document.queryForm.passage.value.length == 0) return false;">
+              <form name="queryForm" class="w-100" action="/ask" method="post">
+                <!--onSubmit="if(document.queryForm.passage.value.length == 0) return false;"> -->
                 <!-- Textarea -->
                 <div class="form-group">
                   <label for="passage">Text</label>
@@ -62,7 +63,7 @@
               <!-- Tags -->
               <div class="pb-2"><strong>Tags sorted by likelihood</strong></div>
               <div class="p-2 border rounded">
-                <div class="row">{% block answer %}{% endblock %}<br /></div>
+                <div class="row">{% block answer %}{% endblock %}</div>
               </div>
             </div>
           </div>

@@ -56,6 +56,12 @@ body {
   transform: scale(1.1); 
 }
 
+span.err {
+  font-weight: bold;
+  color: #D8000C;
+  background-color: #FFD2D2;
+}
+
 /* Extra small devices (less than 568px) */
 /* No media query for `xs` since this is the default in Bootstrap */
 

@@ -2,9 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, \
     send_from_directory
 import requests as http_client
 from http import HTTPStatus
-
-THRESHOLD = 0.5
-ENDPOINT = 'http://0.0.0.0:8000/classifier'
+from settings import THRESHOLD, ENDPOINT, TITLE
 
 
 def sort_dict(dct):
@@ -32,7 +30,10 @@ def create_app(ENDPOINT):
 
     @app.route('/')
     def index():
-        return render_template('base.html')
+        return render_template('home.html', title=TITLE)
+
+    def error(err, info):
+        app.logger.error('{}: {}'.format(err, info))
 
     @app.route('/ask', methods=['GET', 'POST'])
     def ask():
@@ -45,22 +46,30 @@ def create_app(ENDPOINT):
                 }
             ]
         }
-        err, lo, hi = None, None, None
+        err = None
+        hi, lo = [], []
         try:
             response = http_client.post(url=ENDPOINT, json=query)
             if response.status_code == HTTPStatus.BAD_REQUEST:
-                err = 'Invalid text data'
-            if response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:
+                err = 'Invalid text'
+                error(err, response.text)
+            elif response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:
                 err = 'Internal server error'
-            scores = response.json()[0].get("scores")
-            lo, hi = sort_dict(scores)
+                error(err, response.text)
+            else:
+                scores = response.json()[0].get("scores")
+                lo, hi = sort_dict(scores)
         except Exception as e:
             err = 'Prediction service unavailable'
-
+            error(err, e)
+        app.logger.info({
+            'text': passage,
+            'hi': hi,
+            'lo': lo
+        })
         return render_template(
-            'answer.html', passage=passage,
+            'answer.html', passage=passage, title=TITLE,
             response_hi=hi, response_lo=lo, err=err)
-
     return app
 
 

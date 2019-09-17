@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 {% block answer %}
-{% if err %}
-<div class="col-12 text-center"><em>{{err}}</em></div>
-{% else %}
-{% for (k, v) in response_hi %}
-<div class="tag col-6 col-md-4 py-1"><i class="fa fa-tag pr-1"></i><strong>{{k}} ({{v}})</strong></div>
-{% endfor %}
-{% for (k, v) in response_lo %}
-<div class="tag col-6 col-md-4 py-1"><i class="fa fa-tag pr-1"></i>{{k}} ({{v}})</div>
-{% endfor %}
-{% endif %}
+    {% if err %}
+        <div class="col-12 text-center"><span class="err">{{err}}</span></div>
+    {% elif response_hi or response_lo %}
+        {% for (k, v) in response_hi %}
+            <div class="tag col-6 col-md-4 py-1"><i class="fa fa-tag pr-1"></i><strong>{{k}} ({{v}})</strong></div>
+        {% endfor %}
+        {% for (k, v) in response_lo %}
+            <div class="tag col-6 col-md-4 py-1"><i class="fa fa-tag pr-1"></i>{{k}} ({{v}})</div>
+        {% endfor %}
+    {% else %}
+        <div class="col-12 text-center"><span class="err">No tags are found.</span></div>
+    {% endif %}
 {% endblock %}
