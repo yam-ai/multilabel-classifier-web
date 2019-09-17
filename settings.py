@@ -1,3 +1,4 @@
+# coding=utf-8
 # Copyright 2019 YAM AI Machinery Limited
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,18 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM python:alpine
-
-WORKDIR /web/
-COPY . /web/
-
-RUN pip install -U pip setuptools \
-    && pip install -r requirements.txt
-
-ENV MLC_HOST_PORT="0.0.0.0:5000"
-ENV MLC_ENDPOINT="http://0.0.0.0:8000/classifier"
-RUN echo '#!/usr/bin/env sh' > /serve.sh \
-    && echo 'gunicorn -b ${MLC_HOST_PORT} "web:create_app(\"${MLC_ENDPOINT}\")"' >> /serve.sh \
-    && chmod +x /serve.sh
-
-CMD ["/serve.sh"]
+THRESHOLD = 0.5
+ENDPOINT = 'http://0.0.0.0:8000/classifier'
+HOST_PORT = '0.0.0.0:5000'
+TITLE = 'AI Text Tagging'
