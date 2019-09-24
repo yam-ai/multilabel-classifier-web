@@ -52,9 +52,9 @@ docker run -e "MLC_ENDPOINT=http://backend:8000/classifier" -e "MLC_HOST_PORT=0.
 
 These settings are as follows:
 
-* `THRESHOLD`: the label of which the likelihood is above this threshold will be shown in bold.
-* `ENDPOINT`: the endpoint of the multilabel text classifier backend.
-* `HOST_PORT`: the host and port for serving this web frontend.
+* `THRESHOLD`: the label of which the likelihood is above this threshold will be shown in bold, e.g., `0.5`.
+* `ENDPOINT`: the default endpoint of the multilabel text classifier backend, e.g., `http://0.0.0.0:8000/classifier`.
+* `HOST_PORT`: the default host and port for serving this web frontend, e.g., `0.0.0.0:5000`.
 * `TITLE`: the title shown on this web frontend.
 
 ### Access the web frontend
