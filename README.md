@@ -1,6 +1,6 @@
 # Multilabel Text Classifier Web Frontend
 
-This is a web frontend for users to query a multilabel text classifier to classify texts they input. The classifier backend engine can be either the [BERT-based multi-label text classification engine](https://github.com/yam-ai/bert-multilabel-classifier) or [fastText-based Multi-label text classification engine](https://github.com/yam-ai/fasttext-multilabel-classifier). 
+This is a web frontend for users to query a multilabel text classifier to classify texts they input. The classifier backend engine can be either the [BERT-based multi-label text classification engine](https://github.com/yam-ai/bert-multilabel-classifier) or [fastText-based multi-label text classification engine](https://github.com/yam-ai/fasttext-multilabel-classifier). 
 
 ## Usage
 
