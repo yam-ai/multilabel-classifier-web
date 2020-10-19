@@ -6,7 +6,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-  <link rel="icon" type="image/png" sizes="192x192" href="/static/img/yamico.png">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <!-- Bootstrap CSS -->
@@ -17,53 +16,55 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="static/css/custom.css">
 
-  <title>{{title}}</title>
+  <title>{{ title }}</title>
 </head>
 
 <body>
-  <div id="container-main" class="container-fluid min-vh-100">
+  <div id="container-main" class="container min-vh-100">
     <div class="row">
       <div class="col-12">
-        <div id="row-header" class="row d-flex align-items-center text-center">
+        <div id="row-header" class="row d-flex align-items-center text-center mt-3 mb-3">
           <div class="col-12">
             <!-- HTML5 Header -->
             <header class="flex-fill d-flex align-items-center">
               <!-- Header Title -->
-              <div class="title w-100">{{title}}<br />
-              <small>Powered by <strong><a href="https://www.yam.ai">YAM</a></strong></small>
-              </div>
+              <div class="title w-100">{{ title }}</div>
             </header>
           </div>
         </div>
-        <div id="row-query" class="row">
-          <div class="col-12 d-flex justify-content-center">
-            <!-- Query Panel -->
-            <div class="panel">
-              <!-- Query Form -->
-              <form name="queryForm" class="w-100" action="/ask" method="post"
-                onSubmit="if(document.queryForm.passage.value.length == 0) return false;">
-                <!-- Textarea -->
-                <div class="form-group">
-                  <label for="passage">Text</label>
-                  <textarea class="form-control text-justify" id="passage" name="passage"
-                    placeholder="Please enter the text here...">{{ passage }}</textarea>
+        <div id="row-main" class="row border bg-white">
+          <div class="col-12 pt-2">
+            <div id="row-query" class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <!-- Query Panel -->
+                <div class="panel">
+                  <!-- Query Form -->
+                  <form name="queryForm" class="w-100" action="/ask" method="post"
+                    onSubmit="if(document.queryForm.passage.value.length == 0) return false;">
+                    <!-- Textarea -->
+                    <div class="form-group">
+                      <textarea class="form-control text-justify" id="passage" name="passage"
+                        placeholder="Text">{{ passage }}</textarea>
+                    </div>
+                    <!-- Query Button -->
+                    <button type="submit" class="btn btn-warning mt-3">Tag</button>
+                  </form>
                 </div>
-                <!-- Query Button -->
-                <div class="d-flex align-items-center justify-content-center">
-                  <button type="submit" id="btn-query" class="btn"></button>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
-        </div>
-        <div id="row-tag" class="row">
-          <div class="col-12">
-            <!-- Tag Panel -->
-            <div class="panel">
-              <!-- Tags -->
-              <div class="pb-2"><strong>Tags sorted by likelihood</strong></div>
-              <div class="p-2 border rounded">
-                <div class="row">{% block answer %}{% endblock %}</div>
+          <div class="col-12 pt-2 pb-2">
+            <hr class="w-100" style="border-style:dashed;">
+            <div id="row-tag" class="row">
+              <div class="col-12">
+                <!-- Tag Panel -->
+                <div class="panel">
+                  <!-- Tags -->
+                  <div class="pb-2">Tags sorted by likelihood</div>
+                  <div class="p-2 border rounded">
+                    <div class="row">{% block answer %}{% endblock %}</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 1em;
   min-width: 320px;
+  background-color: #fceacf;
 }
 
 .title {
@@ -12,20 +13,17 @@ body {
   width: 100%;
 }
 
-#row-header {
-  height: 4em;
+#row-header .title {
+  font-size: 1.2rem;
 }
 
 #row-query {
-  background-color: #164450;
-  height: 18em;
   padding-top: .5em;
   padding-bottom: .5em;
 }
 
-#row-tag {
-  height: 5em;
-  margin-top: 3.5em;
+#row-tag i {
+  font-size: .75em;
 }
 
 #row-query label {
@@ -36,22 +34,6 @@ body {
 #passage {
   height: 10em;
   resize: none;
-}
-
-#btn-query {
-  background: url('../img/button.png') no-repeat;
-  background-size: 100%;
-  height: 6em;
-  width: 6em;
-  transition: background-image .5s, opacity 2s;
-  margin-top: 1.5em;
-}
-
-#btn-query:hover {
-  background-image: url('../img/button-hover.png');
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1); 
 }
 
 span.err {
@@ -67,18 +49,6 @@ span.err {
 
 /* Small devices (576px and up) */
 @media (min-width: 576px) {
-  #row-header {
-    height: 4.8em;
-  }
-
-  #row-header .title {
-    font-size: 1.2rem;
-  }
-
-  #row-query {
-    height: 19em;
-  }
-
   #row-query, #row-tag {
     padding: 1em;
   }
@@ -86,16 +56,8 @@ span.err {
 
 /* Medium devices (768px and up) */
 @media (min-width: 768px) {
-  #row-header {
-    height: 5.2em;
-  }
-
   #row-header .title {
     font-size: 1.3rem;
-  }
-
-  #row-query {
-    height: 24em;
   }
 
   #passage {
@@ -105,10 +67,6 @@ span.err {
 
 /* Large devices (992px and up) */
 @media (min-width: 992px) {
-  #row-header {
-    height: 5.6em;
-  }
-
   #row-header .title {
     font-size: 1.4rem;
   }
@@ -120,20 +78,7 @@ span.err {
     font-size: 1.1em !important;
   }
 
-  #row-header {
-    height: 6em;
-  }
-
   #row-header .title {
     font-size: 1.5em;
-  }
-
-  #row-query {
-    height: 26em;
-  }
-
-  #btn-query {
-    height: 7em;
-    width: 7em;
   }
 }
